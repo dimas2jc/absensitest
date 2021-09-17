@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManajerController;
+use App\Http\Controllers\HrdController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/manajer/dashboard', [ManajerController::class, 'index'])->name('manajer');
+Route::get('/manajer/pengajuan-izin', [ManajerController::class, 'pengajuan']);
+Route::get('/manajer/laporan', [ManajerController::class, 'laporan']);
