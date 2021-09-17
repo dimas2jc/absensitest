@@ -1,44 +1,64 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+/**
+ * Class User
+ * 
+ * @property string $id_user
+ * @property string $nama
+ * @property string $alamat
+ * @property string $email
+ * @property string $password
+ * @property int $role
+ * @property int $status
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * 
+ * @property Collection|Absensi[] $absensis
+ * @property Collection|PengajuanIzin[] $pengajuan_izins
+ *
+ * @package App\Models
+ */
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+	protected $table = 'user';
+	protected $primaryKey = 'id_user';
+	public $incrementing = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+	protected $casts = [
+		'role' => 'int',
+		'status' => 'int'
+	];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+	protected $hidden = [
+		'password'
+	];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+	protected $fillable = [
+		'nama',
+		'alamat',
+		'email',
+		'password',
+		'role',
+		'status'
+	];
+
+	public function absensis()
+	{
+		return $this->hasMany(Absensi::class, 'id_user');
+	}
+
+	public function pengajuan_izins()
+	{
+		return $this->hasMany(PengajuanIzin::class, 'id_user');
+	}
 }
