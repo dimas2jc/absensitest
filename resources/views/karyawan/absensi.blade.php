@@ -27,7 +27,16 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">
-                            Absensi
+                            Absensi @php if($check == 0){
+                                echo "Masuk";
+                            }
+                            elseif($check == 1){
+                                echo "Keluar";
+                            }
+                            elseif($check == 2){
+                                echo "Anda hari ini sudah direkam";
+                            }
+                            @endphp
                         </h4>
                     </div>
                     <div class="card-body">
@@ -50,20 +59,22 @@
                                         <input type="text" name="tanggal" class="form-control" value="{{$date}}" readonly required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="latitude">Latitude</label>
-                                        <input type="hidden" name="latitude" id="latitude" class="form-control" placeholder="Latitude" required>
+                                        <!-- <label for="latitude">Latitude</label> -->
+                                        <input type="hidden" name="latitude" id="latitude" class="form-control" placeholder="Latitude">
                                     </div>
                                     <div class="form-group">
-                                        <label for="longitude">Longitude</label>
-                                        <input type="hidden" name="longitude" id="longitude" class="form-control" placeholder="Longitude" required>
+                                        <!-- <label for="longitude">Longitude</label> -->
+                                        <input type="hidden" name="longitude" id="longitude" class="form-control" placeholder="Longitude">
                                     </div>
                                     <div class="form-group">
-                                        <label for="accuracy">Accuracy</label>
-                                        <input type="hidden" name="accuracy" id="accuracy" class="form-control" placeholder="Accuracy" required>
+                                        <!-- <label for="accuracy">Accuracy</label> -->
+                                        <input type="hidden" name="accuracy" id="accuracy" class="form-control" placeholder="Accuracy">
                                     </div>
+                                    @if($check != 2)
                                     <div style="text-align: right">
                                         <button type="submit" class="btn btn-sm btn-primary">SIMPAN</button>
                                     </div>
+                                    @endif
                                 </form>
                             </div>
                         </div>

@@ -56,6 +56,7 @@ Route::middleware('auth','checkRole:3')->prefix('karyawan')->group(function () {
     Route::get('/absensi', [KaryawanController::class, 'index'])->name('karyawan');
     Route::get('/pengajuan-izin', [KaryawanController::class, 'pengajuan']);
     
+    Route::post('/insert-absensi', [KaryawanController::class, 'storeAbsensi']);
     Route::post('/tambah-pengajuan', [KaryawanController::class, 'storePengajuan']);
 });
 

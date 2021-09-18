@@ -53,7 +53,7 @@
                                         <td>{{$d->jenis_izin->nama}}</td>
                                         <td>{{date("d-m-Y", strtotime($d->tgl_mulai))}}</td>
                                         <td>{{date("d-m-Y", strtotime($d->tgl_selesai))}}</td>
-                                        <td>{{$d->durasi}}</td>
+                                        <td>{{$d->durasi}} hari</td>
                                         <td colspan="2" align="center">
                                             @if($d->status == 0)
                                                 <button type="button" class="btn btn-sm btn-danger btn-reject" id="{{$d->id_pengajuan}}-{{$d->user->nama}}" data-toggle="modal" data-target="#reject">

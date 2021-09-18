@@ -7,6 +7,7 @@ use App\Models\PengajuanIzin;
 use App\Models\Jenis_izin;
 use App\Models\User;
 use App\Models\Absensi;
+use App\Models\DetailAbsensi;
 use Carbon\Carbon;
 use DB;
 
@@ -102,7 +103,7 @@ class ManajerController extends Controller
 
         $data = [];
         $karyawan = User::where('role', 3)->get()->toArray();
-        $absensi = Absensi::select('absensi.*', 'da.*')->join('detail_absensi as da', 'da.id_absensi', '=', 'absensi.id_absensi')->whereBetween(DB::raw('DATE(absensi.tanggal)'),[$date,$date_end])->get()->toArray();
+        $absensi = Absensi::whereBetween(DB::raw('DATE(absensi.tanggal)'),[$date,$date_end])->get()->toArray();
         $pengajuan_izin = PengajuanIzin::whereBetween(DB::raw('DATE(tgl_mulai)'),[$date,$date_end])->where('status', 1)->get()->toArray();
 
         for($i = 0; $i < count($karyawan); $i++){
@@ -117,11 +118,10 @@ class ManajerController extends Controller
             // Absensi
             for($j = 0; $j < count($absensi); $j++){
                 $id_absensi = $absensi[$j]['id_absensi'];
+                $detail_absensi = DetailAbsensi::where('id_absensi', $id_absensi)->get()->toArray();
 
-                for($k = 0 ;$k < count($absensi); $k++){
-                    if($id_absensi == $absensi[$k]['id_absensi']){
-                        $count += 1;
-                    }
+                if(count($detail_absensi) == 2){
+                    $count = 2;
                 }
 
                 if($karyawan[$i]['id_user'] == $absensi[$j]['id_user']){
@@ -149,7 +149,7 @@ class ManajerController extends Controller
             }
         }
 
-        // dd($data);
+        // dd($absensi);
         
         return view('manajer.laporan', compact('data'));
     }
