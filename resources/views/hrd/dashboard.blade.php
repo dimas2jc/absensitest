@@ -68,5 +68,5 @@
 
 @section('extra-script')
     <script src="{{ asset('/metroadmin/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('/assets/manajer/js/dashboard.js') }}"></script>
+    <script src="{{ asset('/assets/hrd/js/dashboard.js') }}"></script>
 @endsection

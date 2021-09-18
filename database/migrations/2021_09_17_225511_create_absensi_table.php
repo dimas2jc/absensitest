@@ -17,6 +17,7 @@ class CreateAbsensiTable extends Migration
             $table->string('id_absensi', 32)->primary();
             $table->string('id_user', 32)->index('absensi_fk');
             $table->date('tanggal');
+            $table->tinyInteger('status');
         });
     }
 

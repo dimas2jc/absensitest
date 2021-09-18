@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ManajerController;
 use App\Http\Controllers\HrdController;
 use App\Http\Controllers\KaryawanController;
@@ -17,6 +18,33 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/manajer/dashboard', [ManajerController::class, 'index'])->name('manajer');
-Route::get('/manajer/pengajuan-izin', [ManajerController::class, 'pengajuan']);
-Route::get('/manajer/laporan', [ManajerController::class, 'laporan']);
+// Route Authenticate
+Route::get('/', [HomeController::class, 'authenticate'])->name('login');
+Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+Route::post('/post-login', [HomeController::class, 'postLogin']);
+
+Route::group(['middleware' => ['auth']],function(){
+    Route::get('/profile', [HomeController::class, 'profile']);
+    Route::get('/ganti-password', [HomeController::class, 'gantiPassword']);
+
+    Route::post('/ganti-password', [HomeController::class, 'updatePassword']);
+    Route::post('/edit-profile', [HomeController::class, 'updateProfile']);
+});
+
+// Route HRD
+Route::middleware('auth','checkRole:1')->prefix('hrd')->group(function () {
+    Route::get('/dashboard', [HrdController::class, 'index'])->name('hrd');
+    Route::get('/user', [HrdController::class, 'user']);
+    Route::get('/laporan', [HrdController::class, 'laporan']);
+
+    Route::post('/tambah-user', [HrdController::class, 'store']);
+    Route::post('/update-status-user', [HrdController::class, 'userStatus']);
+});
+
+// Route Manajer
+Route::middleware('auth','checkRole:2')->prefix('manajer')->group(function () {
+    Route::get('/dashboard', [ManajerController::class, 'index'])->name('manajer');
+    Route::get('/pengajuan-izin', [ManajerController::class, 'pengajuan']);
+    Route::get('/laporan', [ManajerController::class, 'laporan']);
+});
+
