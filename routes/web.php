@@ -46,5 +46,16 @@ Route::middleware('auth','checkRole:2')->prefix('manajer')->group(function () {
     Route::get('/dashboard', [ManajerController::class, 'index'])->name('manajer');
     Route::get('/pengajuan-izin', [ManajerController::class, 'pengajuan']);
     Route::get('/laporan', [ManajerController::class, 'laporan']);
+
+    Route::post('/pengajuan-approve', [ManajerController::class, 'pengajuanApprove']);
+    Route::post('/pengajuan-reject', [ManajerController::class, 'pengajuanReject']);
+});
+
+// Route Karyawan
+Route::middleware('auth','checkRole:3')->prefix('karyawan')->group(function () {
+    Route::get('/absensi', [KaryawanController::class, 'index'])->name('karyawan');
+    Route::get('/pengajuan-izin', [KaryawanController::class, 'pengajuan']);
+    
+    Route::post('/tambah-pengajuan', [KaryawanController::class, 'storePengajuan']);
 });
 

@@ -19,7 +19,7 @@ class CreatePengajuanIzinTable extends Migration
             $table->string('id_user', 32)->index('pengajuan_fk2');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
-            $table->string('durasi', 8);
+            $table->integer('durasi');
             $table->smallInteger('status');
             $table->timestamps();
         });

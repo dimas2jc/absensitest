@@ -16,8 +16,8 @@ class CreateDetailAbsensiTable extends Migration
         Schema::create('detail_absensi', function (Blueprint $table) {
             $table->string('id_detail_absensi', 32)->primary();
             $table->string('id_absensi', 32)->index('detail_absensi_fk');
-            $table->timestamp('jam_masuk')->useCurrent();
-            $table->timestamp('jam_keluar')->useCurrent();
+            $table->timestamp('jam_masuk')->nullable();
+            $table->timestamp('jam_keluar')->nullable();
             $table->string('lokasi', 500);
         });
     }

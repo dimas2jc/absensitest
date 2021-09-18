@@ -14,7 +14,7 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Hi , welcome back!</h4>
+                    <h4>Hi {{Auth::user()->nama}}, welcome back!</h4>
                     <!-- <p class="mb-0">Your business dashboard template</p> -->
                 </div>
             </div>
@@ -40,23 +40,23 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Alamat</th>
-                                    <th scope="col">Detail</th>
+                                    <th scope="col">Valid</th>
+                                    <th scope="col">Invalid</th>
+                                    <th scope="col">Sakit</th>
+                                    <th scope="col">Cuti</th>
                                 </thead>
                                 <tbody>
-                                    
+                                    @foreach($data as $d)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td align="center">
-                                            <a href="{{url('/laporan')}}"><button type="button" class="btn btn-sm btn-primary">
-                                                DETAIL
-                                            </button></a>
-                                        </td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d['nama']}}</td>
+                                        <td>{{$d['email']}}</td>
+                                        <td>{{$d['valid']}}</td>
+                                        <td>{{$d['invalid']}}</td>
+                                        <td>{{$d['sakit']}} hari</td>
+                                        <td>{{$d['cuti']}} hari</td>
                                     </tr>
-                                    
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -15,7 +15,7 @@ new Chart(barChart_1, {
         datasets: [
             {
                 label: "Jumlah Pegawai",
-                data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
+                data: data_sakit,
                 borderColor: barChart_1gradientStroke,
                 borderWidth: "0",
                 backgroundColor: barChart_1gradientStroke, 
@@ -56,7 +56,7 @@ new Chart(barChart_2, {
         datasets: [
             {
                 label: "Jumlah Pegawai",
-                data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
+                data: data_cuti,
                 borderColor: barChart_2gradientStroke,
                 borderWidth: "0",
                 backgroundColor: barChart_2gradientStroke, 

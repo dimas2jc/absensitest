@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $id_user
  * @property Carbon $tgl_mulai
  * @property Carbon $tgl_selesai
- * @property string $durasi
+ * @property int $durasi
  * @property int $status
  * @property Carbon $created_at
  * @property Carbon $updated_at

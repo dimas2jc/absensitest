@@ -68,5 +68,20 @@
 
 @section('extra-script')
     <script src="{{ asset('/metroadmin/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+    <script>
+        const sakit = <?= json_encode($sakit); ?>;
+        const cuti = <?= json_encode($cuti); ?>;
+        const data_sakit = [];
+        const data_cuti = [];
+
+        for(var i = 0; i < 12; i++){
+            data_sakit[i] = sakit[i+1][0].jumlah_pengajuan
+        }
+        for(var j = 0; j < 12; j++){
+            data_cuti[j] = cuti[j+1][0].jumlah_pengajuan
+        }
+
+        console.log(data_cuti)
+    </script>
     <script src="{{ asset('/assets/manajer/js/dashboard.js') }}"></script>
 @endsection

@@ -36,11 +36,6 @@
 				</a>
 			</li>
 			@elseif(Auth::user()->role == 3)
-			<li><a href="{{route('karyawan')}}" aria-expanded="false">
-					<i class="fas fa-home" aria-hidden="true"></i>
-					<span class="nav-text">Dashboard</span>
-				</a>
-			</li>
 			<li><a href="{{url('/karyawan/absensi')}}" aria-expanded="false">
 					<i class="fas fa-file-signature" aria-hidden="true"></i>
 					<span class="nav-text">Absensi</span>
