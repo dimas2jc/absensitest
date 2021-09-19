@@ -41,6 +41,11 @@
 					<span class="nav-text">Absensi</span>
 				</a>
 			</li>
+			<li><a href="{{url('/karyawan/riwayat-absensi')}}" aria-expanded="false">
+					<i class="fas fa-file-alt" aria-hidden="true"></i>
+					<span class="nav-text">Riwayat Absensi</span>
+				</a>
+			</li>
 			<li><a href="{{url('/karyawan/pengajuan-izin')}}" aria-expanded="false">
 					<i class="fas fa-file-signature" aria-hidden="true"></i>
 					<span class="nav-text">Pengajuan Izin</span>

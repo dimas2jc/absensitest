@@ -113,6 +113,29 @@ class KaryawanController extends Controller
     }
 
     /**
+     * Untuk menampilkan view riwayat absensi pegawai
+     */
+
+    public function riwayatAbsensi()
+    {
+        $data = Absensi::where('id_user', Auth::user()->id_user)->get();
+
+        return view('karyawan.riwayat_absensi', compact('data'));
+    }
+
+    /**
+     * Untuk menampilkan view detail absensi pegawai
+     * @param $id | id_absensi
+     */
+
+    public function detailAbsensi($id)
+    {
+        $data = DetailAbsensi::where('id_absensi', $id)->orderBy('jam_masuk', 'desc')->get();
+
+        return view('karyawan.detail_absensi', compact('data'));
+    }
+
+    /**
      * Untuk menampilkan view pengajuan izin
      */
 

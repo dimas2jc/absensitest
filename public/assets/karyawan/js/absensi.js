@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    const table = document.getElementById('absensi');
+    $(table).DataTable();
+
     // Geolocation
     $('.ambil-lokasi').on('click', function(){
         if (navigator.geolocation) {
