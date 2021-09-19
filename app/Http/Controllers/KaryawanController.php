@@ -95,7 +95,7 @@ class KaryawanController extends Controller
                 'id_detail_absensi' => Uuid::uuid4()->getHex(),
                 'id_absensi' => $id->id_absensi,
                 'jam_masuk' => $jam_masuk,
-                'lokasi' => "https://maps.google.com/maps?q=-6.1787019, 106.8295072&z=15&output=embed"
+                'lokasi' => "https://maps.google.com/maps?q=".$request->latitude.", ".$request->longitude."&z=".$request->accuracy."&output"
             ]);
         }
         elseif ($jam_keluar != null) {
@@ -103,7 +103,7 @@ class KaryawanController extends Controller
                 'id_detail_absensi' => Uuid::uuid4()->getHex(),
                 'id_absensi' => $id->id_absensi,
                 'jam_keluar' => $jam_keluar,
-                'lokasi' => "https://maps.google.com/maps?q=-6.1787019, 106.8295072&z=15&output=embed"
+                'lokasi' => "https://maps.google.com/maps?q=".$request->latitude.", ".$request->longitude."&z=".$request->accuracy."&output"
             ]);
         }
 

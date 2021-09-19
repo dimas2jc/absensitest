@@ -46,7 +46,7 @@
                                     <!-- Jakarta -->
                                     <iframe src="https://maps.google.com/maps?q=-6.1787019, 106.8295072&z=15&output=embed" id="maps-holder" width="100%" height="300" frameborder="0" style="border:0"></iframe>
                                 </div>
-                                <button type="button" class="btn btn-sm btn-secondary geolocation" style="margin-top: 10px">GEOLOCATION</button>
+                                <button type="button" class="btn btn-sm btn-secondary geolocation ambil-lokasi" style="margin-top: 10px">GEOLOCATION</button>
                             </div>
                             <div class="col-sm-6">
                                 <form action="{{url('karyawan/insert-absensi')}}" method="POST">
